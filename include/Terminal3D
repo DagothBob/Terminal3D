@@ -1,0 +1,16 @@
+/*
+ * 3D ray-tracing rendering engine for terminal emulators on *NIX systems.
+ *
+ * Made by DagothBob (https://github.com/DagothBob)
+ */
+
+#ifndef TERMINAL_3D_H
+#define TERMINAL_3D_H
+
+#include "../src/colour.hpp"
+#include "../src/drawables.hpp"
+#include "../src/render.hpp"
+#include "../src/screen.hpp"
+#include "../src/types.hpp"
+
+#endif
