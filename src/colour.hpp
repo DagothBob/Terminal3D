@@ -7,8 +7,8 @@
 #include <array>
 #include "types.hpp"
 
-#ifndef COLOUR_H
-#define COLOUR_H
+#ifndef TERM3D_COLOUR_H
+#define TERM3D_COLOUR_H
 
 namespace Colour {
     /* Colour to be used per-pixel in the renderer screen buffer. */

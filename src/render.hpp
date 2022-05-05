@@ -11,8 +11,8 @@
 #include "colour.hpp"
 #include "types.hpp"
 
-#ifndef RENDER_H
-#define RENDER_H
+#ifndef TERM3D_RENDER_H
+#define TERM3D_RENDER_H
 
 namespace Renderer {
     extern size_t screen_width; // Calculated based on terminal character width.

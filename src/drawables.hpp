@@ -9,6 +9,9 @@
 #include "render.hpp"
 #include "types.hpp"
 
+#ifndef TERM3D_DRAWABLES_H
+#define TERM3D_DRAWABLES_H
+
 namespace Drawables {
     /* Abstract class for building drawable geometries. */
     class Drawable {
@@ -64,3 +67,5 @@ namespace Drawables {
         virtual bool hit(Renderer::Ray& ray, double int_min, double int_max, hit_record& rec) override;
     };
 }
+
+#endif

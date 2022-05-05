@@ -6,8 +6,8 @@
 
 #include "colour.hpp"
 
-#ifndef SCREEN_H
-#define SCREEN_H
+#ifndef TERM3D_SCREEN_H
+#define TERM3D_SCREEN_H
 
 namespace Screen {
     /* A character represents a 1Wx2H pixel block.
