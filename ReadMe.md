@@ -9,10 +9,9 @@ Terminal3D is a 3D ray-tracing engine that uses your terminal emulator as the ou
 - [NCURSES](https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/)
 
 ## Building
-`
-cd Terminal3D
-./make
-`
+
+`cd Terminal3D`<br>
+`./make`
 
 You'll have to change the Makefile if you use a toolchain other than clang.
 
