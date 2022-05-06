@@ -13,7 +13,17 @@ void geometry_test(double _x, double _z);
 void draw_schvantz(double _x, double _z);
 
 int main(void) {
-    if (!Screen::init_screen()) return EXIT_FAILURE;
+    Colour::Colour_Palette can_palette = Colour::Colour_Palette({
+        Colour::Pixel_Colour(255, 0, 0),
+        Colour::Pixel_Colour(255, 0, 0),
+        Colour::Pixel_Colour(255, 0, 0),
+        Colour::Pixel_Colour(255, 0, 0),
+        Colour::Pixel_Colour(255, 255, 255),
+        Colour::Pixel_Colour(255, 255, 255),
+        Colour::Pixel_Colour(255, 255, 255)
+    });
+
+    if (!Screen::init_screen(can_palette)) return EXIT_FAILURE;
 
     test(1);
 
