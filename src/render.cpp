@@ -62,15 +62,15 @@ Camera::Camera(V3D lookfrom, V3D lookat, V3D vup, double fov_radians, double asp
     double viewport_width = aspect_ratio * viewport_height;
 
     V3D w = (lookfrom - lookat).normalized(); // Points behind the camera
-    V3D u = vup.cross(w).normalized(); // Points straight down
-    V3D v = w.cross(u); // Points straight left
+    V3D u = vup.cross(w).normalized(); // Points straight right
+    V3D v = w.cross(u); // Points straight down
 
     origin = lookfrom;
     horizontal = viewport_width * u;
     vertical = viewport_height * v;
-    lower_left = origin - (horizontal/2) - (vertical/2) - w;
+    upper_left = origin - (horizontal/2) - (vertical/2) - w;
 }
 
 Ray Camera::get_ray(double s, double t) {
-    return Ray(origin, lower_left + (s*horizontal) + (t*vertical) - origin);
+    return Ray(origin, upper_left + (s*horizontal) + (t*vertical) - origin);
 }

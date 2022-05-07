@@ -9,8 +9,8 @@
 #include "sphere.hpp"
 
 void test(int choice);
-void geometry_test(double _x, double _z);
-void draw_schvantz(double _x, double _z);
+void geometry_test(double _x, double _y,  double _z);
+void draw_schvantz(double _x, double _y, double _z);
 
 int main(void) {
     Colour::Colour_Palette can_palette = Colour::Colour_Palette({
@@ -36,52 +36,22 @@ void test(int choice) {
     switch (choice) {
         case 1:
         while (true) {
-            for (double x = 0; x <= 2; x += 0.02) {
-                geometry_test(x, 1);
-                Screen::next_frame();
-            }
-
-            for (double z = 1; z >= -1; z -= 0.02) {
-                geometry_test(2, z);
-                Screen::next_frame();
-            }
-
-            for (double x = 2; x >= 0; x -= 0.02) {
-                geometry_test(x, -1);
-                Screen::next_frame();
-            }
-
-            for (double z = -1; z <= 1; z += 0.02) {
-                geometry_test(0, z);
+            for (double b = 0; b < (4*M_PI); b += 0.01) {
+                geometry_test((cos(b) - -sin(b))/1.5, sin(b), (sin(b) + -cos(b))/1.5);
                 Screen::next_frame();
             }
         }
 
         case 2:
-        geometry_test(1, 1);
+        geometry_test(1, 0, 1);
         Screen::next_frame();
         getch();
         break;
 
         default:
         while (true) {
-            for (double x = 0; x <= 2; x += 0.01) {
-                draw_schvantz(x, 1);
-                Screen::next_frame();
-            }
-
-            for (double z = 1; z >= -1; z -= 0.01) {
-                draw_schvantz(2, z);
-                Screen::next_frame();
-            }
-
-            for (double x = 2; x >= 0; x -= 0.01) {
-                draw_schvantz(x, -1);
-                Screen::next_frame();
-            }
-
-            for (double z = -1; z <= 1; z += 0.01) {
-                draw_schvantz(0, z);
+            for (double b = 0; b < (4*M_PI); b += 0.01) {
+                draw_schvantz((cos(b) - -sin(b))/1.6, sin(b), (sin(b) + -cos(b))/1.6);
                 Screen::next_frame();
             }
         }
@@ -90,8 +60,8 @@ void test(int choice) {
 
 /* Create a sphere around (0, 0, 0) and initialise the camera at
  (_x, 0, _z), pointing at the sphere. */
-void geometry_test(double _x, double _z) {
-    Renderer::Camera camera = Renderer::Camera(V3D(-1+_x, 0, -1+_z), V3D(0, 0, -1), V3D(0, 1, 0), M_PI_2, static_cast<double>(Renderer::screen_width) / static_cast<double>(Renderer::screen_height));
+void geometry_test(double _x, double _y, double _z) {
+    Renderer::Camera camera = Renderer::Camera(V3D(_x, _y, _z-1), V3D(0, 0, -1), V3D(0, 1, 0), M_PI_2, static_cast<double>(Renderer::screen_width) / static_cast<double>(Renderer::screen_height));
     Drawables::Draw_List objects;
     objects.add(std::make_shared<Sphere>(Sphere(V3D(0, 0, -1), 0.6)));
 
@@ -113,8 +83,8 @@ void geometry_test(double _x, double _z) {
 }
 
 /* Similar to geometry_test in many ways. */
-void draw_schvantz(double _x, double _z) {
-    Renderer::Camera camera = Renderer::Camera(V3D(-1+_x,  0, -1+_z), V3D(0, 0, -1), V3D(0, 1, 0), M_PI_2, static_cast<double>(Renderer::screen_width) / static_cast<double>(Renderer::screen_height));
+void draw_schvantz(double _x, double _y, double _z) {
+    Renderer::Camera camera = Renderer::Camera(V3D(_x,  _y, _z-1), V3D(0, 0, -1), V3D(0, 1, 0), M_PI_2, static_cast<double>(Renderer::screen_width) / static_cast<double>(Renderer::screen_height));
     double offset = .3;
     Drawables::Draw_List oy_vey;
     oy_vey.add(std::make_shared<Sphere>(Sphere(V3D(-0.2, 0+offset, -1), 0.3)));
