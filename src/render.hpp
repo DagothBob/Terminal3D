@@ -63,10 +63,10 @@ namespace Renderer {
     class Camera {
         public:
 
-        V3D origin;
-        V3D horizontal;
-        V3D vertical;
-        V3D lower_left;
+        V3D origin; // Where the camera resides
+        V3D horizontal; // Points right from origin
+        V3D vertical; // Points down from origin
+        V3D upper_left; // Points to the upper-left of the screen boundry
 
         /* Set Camera with values appropriate for the test cases that come
         with this package. */
